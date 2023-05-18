@@ -33,9 +33,12 @@ def index(request):
 
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
+    zodiacs = list(zodiac_dict)
     data = {
         'description_zodiac': description,
         'sign': sign_zodiac,
+        'zodiacs': zodiacs,
+        'sign_name': description.split()[0],
     }
     return render(request, 'horoscope/info_zodiac.html', context=data)
 
@@ -48,5 +51,6 @@ def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
     redirect_url = reverse('horoscope-name', args=[name_zodiac])
     return HttpResponseRedirect(redirect_url)
 
-
+def beautiful_table(request):
+    return render(request, 'includes/table.html')
 

@@ -19,4 +19,5 @@ from horoscope import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('horoscope/', include('horoscope.urls')),
+    path('beautiful_table/', views.beautiful_table),
 ]
